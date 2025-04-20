@@ -7,12 +7,15 @@ export type Article = {
   content: string
   author: string
   date: Date
-  lieu?: string
+  dateFin: Date
+  adresse?: string
   ville: string
   frais?: number
   imageUrl: string
   tags?: string[]
-  excerpt: string
+  shortDesc: string
+  website?: string
+  privateComs?: string
 }
 
 // Sample image URLs for our mock articles
@@ -53,12 +56,13 @@ const createSampleArticles = (): Article[] => {
       content: generateLoremIpsum(5),
       author: "Mick",
       date: new Date(2023, 11, 15),
+      dateFin: new Date(2023, 11, 17),
       ville: "Caraman, France",
       frais: 5,
       imageUrl: sampleImages[0],
       tags: ["Cosplay", "Gaming", "Caraman"],
-      excerpt:
-        "On se retrouve encore une fois cette année à la caraman.",
+      shortDesc:
+        "On se retrouve encore une fois cette année à Caraman.",
     },
     {
       _id: uuidv4(),
@@ -67,11 +71,12 @@ const createSampleArticles = (): Article[] => {
       content: generateLoremIpsum(4),
       author: "Mick",
       date: new Date(2023, 10, 22),
+      dateFin: new Date(2023, 11, 27),
       ville: "Albi, France",
       frais: 5,
       imageUrl: sampleImages[1],
       tags: ["Cosplay", "Gaming", "Albi"],
-      excerpt:
+      shortDesc:
         "Première édition de l'albi game festival où nous sommes invités pour organiser les tournois.",
     },
     {
@@ -81,12 +86,12 @@ const createSampleArticles = (): Article[] => {
       content: generateLoremIpsum(6),
       author: "Mick",
       date: new Date(2023, 11, 5),
-      lieu: "Salle patus cremat 7 Rue des Muettes Albi, Tarn 81000 France",
+      dateFin: new Date(2023, 11, 7),
+      adresse: "Salle patus cremat 7 Rue des Muettes Albi, Tarn 81000 France",
       ville: "Albi, France",
-      frais: 5,
       imageUrl: sampleImages[2],
       tags: ["Summer", "Tournoi", "Albi"],
-      excerpt:
+      shortDesc:
         "Oui... Nous revenons a l'Urban Festival. On vous propose 4 tournois lors de cette édition! ",
     },
     {
@@ -95,12 +100,13 @@ const createSampleArticles = (): Article[] => {
       published: true,
       content: generateLoremIpsum(4),
       author: "Mick",
-      date: new Date(2023, 9, 18),
+      date: new Date(2026, 9, 18),
+      dateFin: new Date(2026, 9, 19),
       ville: "Lyon, France",
       frais: 10,
       imageUrl: sampleImages[3],
       tags: ["Tournoi", "MixUp", "Lyon"],
-      excerpt:
+      shortDesc:
         "3ème année de suite ou nous nous rendons au MixUp. Vous voulez vous joindre a nous ? C'est possible !",
     },
   ]
@@ -125,14 +131,14 @@ class MockDatabase {
   async getFuturEvents(): Promise<Article[]> {
     // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 500))
-    const articles = this.articles.filter((article) => article.date > new Date())
+    const articles = this.articles.filter((article) => article.dateFin > new Date())
     return [...articles].sort((a, b) => a.date.getTime() - b.date.getTime())
   }
   
   async getPastEvents(): Promise<Article[]> {
     // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 500))
-    const articles = this.articles.filter((article) => article.date < new Date())
+    const articles = this.articles.filter((article) => article.dateFin < new Date())
     return [...articles].sort((a, b) => b.date.getTime() - a.date.getTime())
   }
 

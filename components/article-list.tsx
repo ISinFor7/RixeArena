@@ -9,8 +9,8 @@ export function ArticleList({ articles }: ArticleListProps) {
   if (articles.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
-        <h2 className="text-2xl font-bold">No articles found</h2>
-        <p className="text-muted-foreground">Check back later for new content.</p>
+        <h2 className="text-2xl font-bold">Aucun évènement trouvé</h2>
+        <p className="text-muted-foreground">Revenez voir plus tard.</p>
       </div>
     )
   }

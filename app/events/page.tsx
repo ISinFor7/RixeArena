@@ -10,11 +10,16 @@ export default async function Calendrier() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <h1 className="text-[40px] font-bold text-center sm:text-left">
-          Page d'événements
+          Page d'évènements
         </h1>
-        <p className="text-[20px] text-center sm:text-left">
-          Evénements à venir, et passés.
-        </p>
+        <div>
+          <p className="text-[20px] text-center sm:text-left">
+            Evénements à venir, et passés.
+          </p>
+          <p className="text-[16px] text-center sm:text-left">
+            (cliquez sur les évènements pour + d'infos)
+          </p>
+        </div>
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
             Events futurs:

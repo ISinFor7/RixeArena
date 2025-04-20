@@ -10,12 +10,16 @@ export type Article = {
   published:boolean
   title: string
   content: string
+  author: string
   date: Date
-  lieu: string
+  dateFin: Date
+  adresse?: string
+  ville: string
   frais?: number
-  imageUrl?: string
+  imageUrl: string
   tags?: string[]
-  excerpt?: string
+  shortDesc: string
+  website?: string
   privateComs?: string
 }
 
