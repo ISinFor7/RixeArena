@@ -1,4 +1,8 @@
-import clientPromise from "./mongodb"
+import { mockDb, type Article } from "@/lib/mock-db"
+
+export type { Article } from "@/lib/mock-db"
+
+/*import clientPromise from "./mongodb"
 import { ObjectId } from "mongodb"
 
 export type Article = {
@@ -11,6 +15,7 @@ export type Article = {
   frais?: number
   imageUrl?: string
   tags?: string[]
+  excerpt?: string
   privateComs?: string
 }
 
@@ -40,6 +45,27 @@ export async function getArticleById(id: string) {
     }
 
     return JSON.parse(JSON.stringify(article)) as Article
+  } catch (error) {
+    console.error(`Failed to fetch article with id ${id}:`, error)
+    return null
+  }
+}*/
+
+
+export async function getArticles(): Promise<{ futureEvents: Article[]; pastEvents: Article[] }> {
+  try {
+    const futureEvents = await mockDb.getFuturEvents();
+    const pastEvents = await mockDb.getPastEvents();
+    return { futureEvents, pastEvents };
+  } catch (error) {
+    console.error("Failed to fetch articles:", error);
+    return { futureEvents: [], pastEvents: [] };
+  }
+}
+
+export async function getArticleById(id: string): Promise<Article | null> {
+  try {
+    return await mockDb.getArticleById(id)
   } catch (error) {
     console.error(`Failed to fetch article with id ${id}:`, error)
     return null

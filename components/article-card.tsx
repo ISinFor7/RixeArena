@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/card"
-import { CalendarIcon, User2Icon, TagIcon } from "lucide-react"
+import { CalendarIcon, User2Icon, TagIcon, MapPin } from "lucide-react"
 import { Badge } from "@/components/badge"
 import type { Article } from "@/lib/articles"
 
@@ -10,13 +10,13 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   const formattedDate =
-    article.createdAt instanceof Date
-      ? article.createdAt.toLocaleDateString("en-US", {
+    article.date instanceof Date
+      ? article.date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })
-      : new Date(article.createdAt).toLocaleDateString("en-US", {
+      : new Date(article.date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
@@ -39,7 +39,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         </CardHeader>
         <CardContent>
           <p className="line-clamp-3 text-muted-foreground">
-            {article.excerpt || article.content.substring(0, 150) + "..."}
+            {article.excerpt /*|| article.content.substring(0, 150) + "..."*/}
           </p>
         </CardContent>
         <CardFooter className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
@@ -50,6 +50,10 @@ export function ArticleCard({ article }: ArticleCardProps) {
           <div className="flex items-center gap-1">
             <CalendarIcon className="h-4 w-4" />
             <span>{formattedDate}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <MapPin className="h-4 w-4" />
+            <span>{article.ville}</span>
           </div>
           {article.tags && article.tags.length > 0 && (
             <div className="flex items-center gap-1">

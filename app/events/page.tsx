@@ -16,14 +16,17 @@ export default async function Calendrier() {
           Evénements à venir, et passés.
         </p>
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Articles
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
+            Events futurs:
           </h1>
-          <p className="mt-4 text-xl text-muted-foreground">
-            Discover our latest articles and insights
-          </p>
+          <ArticleList articles={articles.futureEvents} />
         </div>
-        <ArticleList articles={articles} />
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
+            Events passés:
+          </h1>
+          <ArticleList articles={articles.pastEvents} />
+        </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
     </div>
