@@ -37,3 +37,54 @@ export default async function Calendrier() {
     </div>
   );
 }
+/*
+//import { getArticles } from "@/lib/articles"
+import { ArticleList } from "@/components/article-list"
+
+export const revalidate = 60 // Revalidate this page every 60 seconds
+
+export default async function Home() {
+  const articles = await getArticles()
+
+  return (
+    <main className="container mx-auto px-4 py-8">
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl font-bold tracking-widest sm:text-5xl uppercase">RETROWAVE ARTICLES</h1>
+        <div className="h-1 w-40 bg-gradient-to-r from-primary via-secondary to-accent mx-auto my-4"></div>
+        <p className="mt-4 text-xl text-muted-foreground">DISCOVER THE FUTURE OF THE PAST</p>
+      </div>
+
+      <div className="articles-container">
+        <ArticleList articles={articles} />
+      </div>
+    </main>
+  )
+}
+
+*/
+
+/*
+import { getArticles } from "@/lib/articles"
+import { ArticleList } from "@/components/article-list"
+
+export const revalidate = 60 // Revalidate this page every 60 seconds
+
+export default async function Home() {
+  const articles = await getArticles()
+
+  return (
+    <main className="container mx-auto px-4 py-8">
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl font-bold tracking-widest sm:text-5xl uppercase">RETROWAVE ARTICLES</h1>
+        <div className="h-1 w-40 bg-gradient-to-r from-primary via-secondary to-accent mx-auto my-4"></div>
+        <p className="mt-4 text-xl text-muted-foreground">DISCOVER THE FUTURE OF THE PAST</p>
+      </div>
+
+      <div className="articles-container">
+        <ArticleList articles={articles} />
+      </div>
+    </main>
+  )
+}
+
+*/
