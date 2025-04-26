@@ -7,11 +7,17 @@ export function RetrowaveHeader() {
       <div className="container mx-auto flex h-20 items-center px-4">
         <Link href="/" className="flex items-center gap-2 font-bold z-10">
           <BookOpenIcon className="h-6 w-6 text-primary" />
-          <span className="text-primary text-xl tracking-wider">RETROWAVE ARTICLES</span>
+          <span className="text-primary text-xl tracking-wider">Rixe Arena Tournament</span>
         </Link>
         <nav className="ml-auto flex items-center gap-4 z-10">
           <Link href="/" className="text-sm font-medium hover:text-secondary transition-colors">
             HOME
+          </Link>
+          <Link href="/contact" className="text-sm font-medium hover:text-secondary transition-colors">
+            Contact
+          </Link>
+          <Link href="/events" className="text-sm font-medium hover:text-secondary transition-colors">
+            Events
           </Link>
         </nav>
       </div>

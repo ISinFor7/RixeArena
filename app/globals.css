@@ -1,7 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/theme";
+@import "tailwindcss";
 
+@theme {
+  --color-primary: hsl(320 100% 60%);
+  --color-secondary: hsl(180 100% 60%);
+  --color-accent: hsl(270 100% 70%);
+  --color-destructive: hsl(0 100% 60%);
+  --color-muted: hsl(260 20% 20%);
+  --color-muted-foreground: hsl(320 30% 70%);
+  --color-border: hsl(270 50% 30%);
+  --color-input: hsl(270 50% 30%);
+  --color-ring: hsl(320 100% 60%);
+  --color-background: hsl(260 15% 10%);
+  --color-foreground: hsl(320 100% 90%);
+  --color-card: hsl(260 15% 15%);
+  --color-card-foreground: hsl(320 100% 90%);
+  --color-popover: hsl(260 15% 15%);
+  --color-popover-foreground: hsl(320 100% 90%);
+  --color-primary-foreground: hsl(260 15% 10%);
+  --color-secondary-foreground: hsl(260 15% 10%);
+  --color-accent-foreground: hsl(260 15% 10%);
+  --color-destructive-foreground: hsl(260 15% 10%);
+  --color-border-radius: 0.5rem;
+  --color-border-radius-lg: var(--color-border-radius);
+  --color-border-radius-md: calc(var(--color-border-radius) - 2px);
+  --color-border-radius-sm: calc(var(--color-border-radius) - 4px);
+  --color-typography: {
+    DEFAULT: {
+      css: {
+        maxWidth: "100%",
+      },
+    },
+  };
+}
 @layer base {
   :root {
     --background: 260 15% 10%; /* Dark purple background */
@@ -38,11 +69,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     background-image: linear-gradient(to bottom, rgba(20, 10, 30, 0.8) 0%, rgba(20, 10, 30, 0.8) 100%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ff00ff' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     /* Remove any properties that might interfere with scrolling */
@@ -56,8 +88,9 @@
   h4,
   h5,
   h6 {
-    @apply font-bold text-primary;
-    text-shadow: 0 0 10px theme("colors.primary.DEFAULT"), 0 0 20px rgba(255, 0, 255, 0.5);
+    font-weight: 700;
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px var(--color-ring), 0 0 20px rgba(255, 0, 255, 0.5);
     letter-spacing: 1px;
   }
 
@@ -67,7 +100,7 @@
   }
 
   a:hover {
-    text-shadow: 0 0 10px theme("colors.secondary.DEFAULT"), 0 0 20px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px rgba(0, 255, 255, 0.5);
   }
 
   /* Custom scrollbar */
