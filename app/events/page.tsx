@@ -9,10 +9,13 @@ export default async function Calendrier() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="text-[40px] font-bold text-center sm:text-left">
-          Page d'évènements
-        </h1>
-        <div>
+        <div className="mb-12 text-center w-full">
+          <h1 className="text-4xl font-bold tracking-widest sm:text-5xl uppercase">
+            Page d'évènements
+          </h1>
+          <div className="h-1 w-40 bg-gradient-to-r from-primary via-secondary to-accent mx-auto my-4"></div>
+        </div>
+        <div className="mb-12 text-center w-full">
           <p className="text-[20px] text-center sm:text-left">
             Evénements à venir, et passés.
           </p>
