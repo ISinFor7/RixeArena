@@ -1,0 +1,39 @@
+{
+    "name": "Rixe Arena Tournament",
+    "short_name": "RAT",
+    "lang": "fr-FR",
+    "description": "Rixe Arena Tournament",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1025",
+    "theme_color": "#ff00ff",
+    "icons": [
+      {
+        "src": "/Logo.ico",
+        "sizes": "72x72",
+        "type": "image/x_icon"
+      }
+    ],
+    "shortcuts": [
+      {
+        "name": "Accueil",
+        "short_name": "Accueil",
+        "description": "Page d'accueil",
+        "url": "/",
+        "icons": [{ "src": "/Logo.ico", "sizes": "192x192" }]
+      },
+      {
+        "name": "Contact",
+        "short_name": "Contact",
+        "description": "Nous contacter",
+        "url": "/contact"
+      },
+      {
+        "name": "Calendier",
+        "short_name": "Events",
+        "description": "Liste de tous les événements",
+        "url": "/events"
+      }
+    ]
+  }
+  

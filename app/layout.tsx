@@ -2,18 +2,27 @@ import type React from "react"
 import "@/app/globals.css"
 import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
+import { Viewport } from "next"
 
 const orbitron = Orbitron({ subsets: ["latin"] })
+
+
+export const viewport:Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#000000",
+}
 
 export const metadata = {
   title: "Rixe Arena Tournament",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/Logo.ico",
+    shortcut: "/Logo.ico",
     apple: "/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest",
-  themeColor: "#000000",
+  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -24,12 +33,6 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rixe Arena Tournament",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
   },
   robots: {
     index: true,
@@ -42,7 +45,7 @@ export const metadata = {
       "fr-FR": "/fr",
     },
   },
-  description: "A retrowave-themed article site",
+  description: "Rixe Arena Tournament",
 }
 
 export default function RootLayout({

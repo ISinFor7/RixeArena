@@ -11,13 +11,13 @@ export function RetrowaveHeader() {
         </Link>
         <nav className="ml-auto flex items-center gap-4 z-10">
           <Link href="/" className="text-sm font-medium hover:text-secondary transition-colors">
-            HOME
+            Accueil
           </Link>
           <Link href="/contact" className="text-sm font-medium hover:text-secondary transition-colors">
             Contact
           </Link>
           <Link href="/events" className="text-sm font-medium hover:text-secondary transition-colors">
-            Events
+            Calendrier
           </Link>
         </nav>
       </div>

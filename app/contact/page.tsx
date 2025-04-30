@@ -1,4 +1,9 @@
 import Image from "next/image";
+import Discord from "@/components/logo/discord.jsx";
+import Instagram from "@/components/logo/instagram.jsx";
+import Twitch from "@/components/logo/twitch.jsx";
+import X from "@/components/logo/x.jsx";
+import Youtube from "@/components/logo/youtube.jsx";
 
 export default function Calendrier() {
   return (
@@ -7,54 +12,43 @@ export default function Calendrier() {
         <h1 className="text-[40px] font-bold text-center sm:text-left">
           Contactez nous
         </h1>
+        <h2 className="text-[20px] text-center sm:text-left">
+          Besoin d’un devis ? <br/>
+          Vous voudriez faire ou animer un tournoi, un événement ou une conférence jeu vidéo mais vous ne savez pas comment?
+          Vous êtes un particulier, une association, une entreprise privée ou publique…
+          Laissez nous faire et profitez pleinement de nos connaissances!
+        </h2>
+        <h2 className="text-[16px] text-center sm:text-right">
+          Une autre demande? <br/>
+          Une question, une demande, une remarque, une volonté, …
+          Nous restons à votre disposition pour répondre à vos messages.
+          Nous essaierons de revenir vers vous dans les plus brefs délais.
+        </h2>
         <p className="text-[20px] text-center sm:text-left">
           Par ce formulaire ou bien notre adresse email ou nos réseaux sociaux.
         </p>
-        <p>
-            <a href="mailto:rixe-arena-tournament@hotmail.com">
-                rixe-arena-tournament@hotmail.com
-            </a>
+        <div className="flex flex-col gap-[16px] items-center sm:items-start">
+          <a href="mailto:rixe-arena-tournament@hotmail.com">
+            rixe-arena-tournament@hotmail.com
+          </a>
+          <ul className="flex gap-[24px] flex-wrap items-center justify-center sm:justify-start">
             <a href="https://www.instagram.com/rixe_arena_tournament/" target="_blank" rel="noopener noreferrer">
-                <Image
-                    src="/instagram.png"
-                    alt="Instagram"
-                    width={24}
-                    height={24}
-                />
+              <Instagram className="text-accent size-24"/>
             </a>
             <a href="https://www.twitch.tv/rixearenatournament" target="_blank" rel="noopener noreferrer">    
-                <Image
-                    src="/twitch.png"
-                    alt="Twitch"
-                    width={24}
-                    height={24}
-                />
+              <Twitch className="text-accent size-24"/>
             </a>    
             <a href="https://www.youtube.com/channel/UCJcTzMEe0RrE6_f5wZxPc2g" target="_blank" rel="noopener noreferrer">    
-                <Image
-                    src="/youtube.png"
-                    alt="Youtube"
-                    width={24}
-                    height={24}
-                />
+                <Youtube className="text-accent size-24"/>
             </a>
             <a href="https://www.x.com/RixeArena" target="_blank" rel="noopener noreferrer">
-                <Image
-                    src="/X.png"
-                    alt="X"
-                    width={24}
-                    height={24}
-                />
+              <X className="text-accent size-24"/>
             </a>
             <a href="https://www.discord.gg/gTEh9HT" target="_blank" rel="noopener noreferrer">
-                <Image
-                    src="/discord.png"
-                    alt="Discord"
-                    width={24}
-                    height={24}
-                />
+              <Discord className="text-accent size-24"/>
             </a>
-        </p>
+          </ul>
+        </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
       </footer>
