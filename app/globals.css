@@ -157,7 +157,6 @@
 /* Scanline effect */
 .scanlines {
   position: relative;
-  overflow: hidden;
 }
 
 .scanlines::before {
