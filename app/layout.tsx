@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
 import { Viewport } from "next"
+  
 
 const orbitron = Orbitron({ subsets: ["latin"] })
 
@@ -58,10 +59,10 @@ export default function RootLayout({
       <body className={`${orbitron.className} scanlines`}>
         <div className="flex min-h-screen flex-col">
           <RetrowaveHeader />
-          <main className="flex-1 container mx-auto px-4 py-8">{children}</main>
+          <main className="flex-1 container mx-auto px-4 pt-2 pb-8">{children}</main>
           <footer className="mt-auto border-t border-primary/30 py-6">
             <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} RETROWAVE ARTICLES. ALL RIGHTS RESERVED.
+              © {new Date().getFullYear()} Rixe Arena Tournament.
             </div>
           </footer>
         </div>

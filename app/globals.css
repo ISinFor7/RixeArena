@@ -11,7 +11,7 @@
   --color-border: hsl(270 50% 30%);
   --color-input: hsl(270 50% 30%);
   --color-ring: hsl(320 100% 60%);
-  --color-background: hsl(260 15% 10%);
+  --color-background: hsl(262.33 100% 8.43%);
   --color-foreground: hsl(320 100% 90%);
   --color-card: hsl(260 15% 15%);
   --color-card-foreground: hsl(320 100% 90%);
@@ -32,7 +32,10 @@
       },
     },
   };
+  
+  
 }
+
 @layer base {
   :root {
     --background: 260 15% 10%; /* Dark purple background */
@@ -67,6 +70,7 @@
   }
 }
 
+
 @layer base {
   * {
     border-color: var(--border);
@@ -77,9 +81,6 @@
     color: hsl(var(--foreground));
     background-image: linear-gradient(to bottom, rgba(20, 10, 30, 0.8) 0%, rgba(20, 10, 30, 0.8) 100%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ff00ff' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    /* Remove any properties that might interfere with scrolling */
-    overflow-y: auto;
-    position: relative;
   }
 
   h1,
@@ -124,18 +125,20 @@
 
 /* Glow effect for cards */
 .card-glow {
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .card-glow:hover {
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.5);
   transform: translateY(-5px);
 }
 
 /* Neon border */
 .neon-border {
   position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .neon-border::after {
@@ -146,6 +149,7 @@
   right: 0;
   bottom: 0;
   border: 1px solid rgba(255, 0, 255, 0.5);
+  border-radius: var(--radius);
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
   pointer-events: none;
 }
@@ -153,6 +157,7 @@
 /* Scanline effect */
 .scanlines {
   position: relative;
+  overflow: hidden;
 }
 
 .scanlines::before {
@@ -177,4 +182,37 @@
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.2), 0 0 40px rgba(0, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   padding: 2rem;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.zoom-in-95 {
+  animation-name: zoomIn95;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn95 {
+  from {
+    transform: scale(0.95) translateY(5px) translateX(-50%);
+  }
+  to {
+    transform: scale(1) translateY(0) translateX(-50%);
+  }
 }

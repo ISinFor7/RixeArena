@@ -6,7 +6,7 @@ const Twitch = (props) => (
     height={24}
     x='0px'
     y='0px'
-    viewBox='0 0 24 24' 
+    viewBox='0 0 24 24'
     fill="none"
     stroke="currentColor"
     strokeLinecap="round"

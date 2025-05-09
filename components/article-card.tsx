@@ -1,75 +1,92 @@
-import Link from "next/link"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { CalendarIcon, User2Icon, TagIcon } from "lucide-react"
+"use client"
+
+import type React from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { User2Icon, TagIcon } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import type { Article } from "@/lib/articles"
 
 interface ArticleCardProps {
   article: Article
+  onOpenPreview: () => void
 }
 
-export function ArticleCard({ article }: ArticleCardProps) {
+export function ArticleCard({ article, onOpenPreview }: ArticleCardProps) {
+  // Format the date to be more prominent
   const formattedDate =
     article.date instanceof Date
       ? article.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
+          month: "short",
           day: "numeric",
         })
       : new Date(article.date).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
+          month: "short",
           day: "numeric",
         })
 
+  // Get year separately for styling
+  const year =
+    article.date instanceof Date ? article.date.getFullYear() : new Date(article.date).getFullYear()
+
+  // Get first few words of title (1-3 words)
+  const titleWords = article.title.split(" ")
+  const shortTitle = titleWords.slice(0, Math.min(3, titleWords.length)).join(" ")
+
+  // Get additional tags (all except the first one)
+  const additionalTags = article.tags && article.tags.length > 1 ? article.tags.slice(1) : []
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    onOpenPreview()
+  }
+
   return (
-    <Link href={`/articles/${article._id}`}>
+    <div onClick={handleCardClick} className="cursor-pointer">
       <Card className="h-full overflow-hidden transition-all card-glow neon-border">
-        {article.imageUrl && (
-          <div className="aspect-video w-full overflow-hidden">
-            <img
-              src={article.imageUrl || "/placeholder.svg"}
-              alt={article.title}
-              className="h-full w-full object-cover transition-all hover:scale-105"
-            />
-          </div>
-        )}
-        <CardHeader>
-          <CardTitle className="line-clamp-2 tracking-wider">{article.title.toUpperCase()}</CardTitle>
+        {/* Compact header with truncated title */}
+        <CardHeader className="p-3 pb-2">
+          <CardTitle className="truncate text-base tracking-wider">{shortTitle.toUpperCase()}</CardTitle>
         </CardHeader>
-        <CardContent>
-          <p className="line-clamp-3 text-muted-foreground">
-            {article.shortDesc || article.content.substring(0, 150) + "..."}
-          </p>
-        </CardContent>
-        <CardFooter className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <User2Icon className="h-4 w-4 text-secondary" />
-            <span>{article.author}</span>
+
+        <div className="flex flex-col">
+          {/* Prominent date display */}
+          <div className="px-3 py-2 text-center border-y border-primary/20">
+            <div className="text-lg font-bold text-secondary">{formattedDate}</div>
+            <div className="text-xs text-muted-foreground">{year}</div>
           </div>
-          <div className="flex items-center gap-1">
-            <CalendarIcon className="h-4 w-4 text-secondary" />
-            <span>{formattedDate}</span>
-          </div>
-          {article.tags && article.tags.length > 0 && (
-            <div className="flex items-center gap-1">
-              <TagIcon className="h-4 w-4 text-secondary" />
-              <div className="flex flex-wrap gap-1">
-                {article.tags.slice(0, 2).map((tag) => (
-                  <Badge key={tag} variant="outline" className="text-xs border-secondary/50">
-                    {tag}
-                  </Badge>
-                ))}
-                {article.tags.length > 2 && (
-                  <Badge variant="outline" className="text-xs border-secondary/50">
-                    +{article.tags.length - 2}
-                  </Badge>
-                )}
+
+          {/* Compact content */}
+          <CardContent className="p-3">
+            <div className="flex flex-col gap-2 text-xs">
+              {/* Author */}
+              <div className="flex items-center gap-1">
+                <User2Icon className="h-3 w-3 text-secondary" />
+                <span className="truncate">{article.author}</span>
               </div>
+
+              {/* Tags - show first tag and +X indicator */}
+              {article.tags && article.tags.length > 0 && (
+                <div className="flex items-center gap-1">
+                  <TagIcon className="h-3 w-3 text-secondary" />
+                  <div className="flex flex-wrap gap-1">
+                    {/* Always show first tag */}
+                    <Badge variant="outline" className="text-xs border-secondary/50">
+                      {article.tags[0]}
+                    </Badge>
+
+                    {/* Show +X for additional tags */}
+                    {additionalTags.length > 0 && (
+                      <Badge variant="outline" className="text-xs border-secondary/50">
+                        +{additionalTags.length}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-        </CardFooter>
+          </CardContent>
+        </div>
       </Card>
-    </Link>
+    </div>
   )
 }
