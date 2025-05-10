@@ -15,11 +15,11 @@ export function ArticleCard({ article, onOpenPreview }: ArticleCardProps) {
   // Format the date to be more prominent
   const formattedDate =
     article.date instanceof Date
-      ? article.date.toLocaleDateString("en-US", {
+      ? article.date.toLocaleDateString("fr-FR", {
           month: "short",
           day: "numeric",
         })
-      : new Date(article.date).toLocaleDateString("en-US", {
+      : new Date(article.date).toLocaleDateString("fr-FR", {
           month: "short",
           day: "numeric",
         })
