@@ -39,9 +39,9 @@ export default function Home() {
                 </div>
                 <div className="flex-1 text-center lg:text-left">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-up animate-delay-200">
-                    Welcome to Rixe Arena Tournament
+                    Welcome to <br/> Rixe Arena Tournament
                   </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl text-secondary max-w-3xl lg:max-w-none mb-10 leading-relaxed animate-fade-in-up animate-delay-400">
+                  <p className="text-lg md:text-xl lg:text-2xl font-semibold text-secondary max-w-3xl lg:max-w-none mb-10 leading-relaxed animate-fade-in-up animate-delay-400">
                     Become a rat, a gaming rat
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animate-delay-600">
@@ -66,7 +66,7 @@ export default function Home() {
             <Gamepad2 className="size-12 text-yellow-300 animate-pulse" />
           </div>
           <div className="container mx-auto flex items-center justify-center h-full">
-            <div className="grid gap-8 mb-16 max-w-4xl mx-auto z-10 px-4">
+            <div className="grid gap-8 mb-16 max-w-6xl z-10 px-2">
               <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border-2 border-secondary/70 sm:mr-20">
                 <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-4">
                   Nous sommes une association à but non lucratif (loi 1901) fondée dans le Tarn en Septembre 2020, spécialisée dans l’organisation d’événements autour des jeux de combat et de la Culture Geek. <br />
