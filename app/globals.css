@@ -1,6 +1,37 @@
 @import "tailwindcss/theme";
 @import "tailwindcss";
 
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animate-delay-600 {
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main{
+  min-width: 99vw;
+}
+
 @theme {
   --color-primary: hsl(320 100% 60%);
   --color-secondary: hsl(180 100% 60%);
@@ -32,8 +63,6 @@
       },
     },
   };
-  
-  
 }
 
 @layer base {
@@ -68,10 +97,7 @@
 
     --radius: 0.5rem;
   }
-}
 
-
-@layer base {
   * {
     border-color: var(--border);
   }
@@ -214,4 +240,21 @@
   to {
     transform: scale(1) translateY(0) translateX(-50%);
   }
+}
+
+/* Mobile menu styles */
+.mobile-menu-container {
+  box-shadow: -5px 0 15px rgba(255, 0, 255, 0.3);
+}
+
+/* Ensure mobile menu appears above other content */
+@media (max-width: 768px) {
+  .mobile-menu-container {
+    z-index: 60;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+.mobile-menu-open {
+  overflow: hidden;
 }

@@ -33,7 +33,7 @@ export function ArticleList({ articles }: ArticleListProps) {
 
   return (
     <>
-      <div className="rounded-lg border border-primary/30 bg-card bg-opacity-80 backdrop-blur-sm p-6 shadow-[0_0_15px_rgba(255,0,255,0.2)]">
+      <div className="rounded-lg border border-primary/30 bg-card bg-opacity-80 backdrop-blur-sm p-2 sm:p-6 shadow-[0_0_15px_rgba(255,0,255,0.2)]">
         <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {articles.map((article) => (
             <ArticleCard key={article._id} article={article} onOpenPreview={() => handleOpenPreview(article)} />
