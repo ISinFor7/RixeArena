@@ -15,7 +15,7 @@ interface ArticlePreviewProps {
 
 export function ArticlePreview({ article, isOpen, onClose }: ArticlePreviewProps) {
   // Close on escape key
-  /*useEffect(() => {
+  useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
     }
@@ -27,10 +27,10 @@ export function ArticlePreview({ article, isOpen, onClose }: ArticlePreviewProps
     return () => {
       document.removeEventListener("keydown", handleEscape)
     }
-  }, [isOpen, onClose])*/
+  }, [isOpen, onClose])
 
   // Prevent scrolling when modal is open
-  /*useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
     } else {
@@ -42,7 +42,7 @@ export function ArticlePreview({ article, isOpen, onClose }: ArticlePreviewProps
     }
   }, [isOpen])
 
-  if (!isOpen) return null*/
+  if (!isOpen) return null
 
   const formattedDate =
     article.date instanceof Date
@@ -66,7 +66,7 @@ export function ArticlePreview({ article, isOpen, onClose }: ArticlePreviewProps
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
         <div
           className="w-full max-w-2xl max-h-[90vh] overflow-auto rounded-lg border border-primary/30 bg-card 
-                    shadow-[0_0_30px_rgba(255,0,255,0.5)] animate-in fade-in zoom-in-95 duration-200"
+                    shadow-[0_0_30px_rgba(255,0,255,0.5)] animate-scale-up"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header with image */}

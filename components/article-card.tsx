@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { User2Icon, TagIcon } from "lucide-react"
+import { MapPinIcon, TagIcon } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import type { Article } from "@/lib/articles"
 
@@ -60,8 +60,8 @@ export function ArticleCard({ article, onOpenPreview }: ArticleCardProps) {
             <div className="flex flex-col gap-2 text-xs">
               {/* Author */}
               <div className="flex items-center gap-1">
-                <User2Icon className="h-3 w-3 text-secondary" />
-                <span className="truncate">{article.author}</span>
+                <MapPinIcon className="h-3 w-3 text-secondary" />
+                <span className="truncate">{article.ville}</span>
               </div>
 
               {/* Tags - show first tag and +X indicator */}
