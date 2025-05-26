@@ -69,18 +69,27 @@ export function RetrowaveHeader() {
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full hidden"
           }`}
         >
+          <div className="flex justify-end p-4 border-b border-primary/20">
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 text-primary hover:text-secondary transition-colors"
+              aria-label="Close mobile menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
           <nav className="flex flex-col p-6 space-y-4">
-            <Link href="/" className="text-sm font-medium hover:text-secondary transition-colors py-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/" className="text-lg font-medium hover:text-secondary transition-colors py-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
               Accueil
             </Link>
-            <Link href="/events" className="text-sm font-medium hover:text-secondary transition-colorspy-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/events" className="text-lg font-medium hover:text-secondary transition-colors py-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
               Calendrier
             </Link>
-            <Link href="/contact" className="text-sm font-medium hover:text-secondary transition-colorspy-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/contact" className="text-lg font-medium hover:text-secondary transition-colors py-2 border-b border-primary/20" onClick={() => setIsMobileMenuOpen(false)}>
               Contact
             </Link>
 
-            {/* Additional mobile-only options */}
+            {/* Additional mobile-only options 
             <div className="pt-4 mt-4 border-t border-primary/20">
               <p className="text-xs text-muted-foreground mb-2">QUICK ACTIONS</p>
               <Link
@@ -97,7 +106,7 @@ export function RetrowaveHeader() {
               >
                 CATEGORIES
               </Link>
-            </div>
+            </div>*/}
           </nav>
         </div>
       </div>

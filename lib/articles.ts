@@ -53,6 +53,18 @@ export async function getArticleById(id: string) {
     console.error(`Failed to fetch article with id ${id}:`, error)
     return null
   }
+}
+export async function getNextEvent() {
+  try {
+    const client = await clientPromise
+    const db = client.db()
+    const filter = { date: { $gte: new Date() }, published: true }
+    const sort = { date: 1 } // Sort by date ascending
+    const nextEvent = await db.collection("articles").find(filter).sort(sort).limit(1).toArray()
+  catch (error) {
+    console.error("Failed to fetch next event:", error)
+    return null
+  }
 }*/
 
 

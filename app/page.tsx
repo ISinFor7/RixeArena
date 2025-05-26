@@ -28,7 +28,7 @@ export default function Home() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
                 {/* Logo */}
                 <div className="flex-shrink-0 mb-8 lg:mb-0 text-center lg:text-left animate-fade-in-up">
-                  <div className="inline-flex items-center justify-center size-8 md:size-24 lg:size-32 text-2xl md:text-3xl lg:text-4xl font-bold shadow-lg">
+                  <div className="inline-flex items-center justify-center size-[10rem] md:size-[12rem] lg:size-[16rem] text-2xl md:text-3xl lg:text-4xl font-bold shadow-lg">
                     <Image
                       src="/Logo.ico"
                       width={800}
@@ -46,10 +46,10 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animate-delay-600">
                     
-                    <Link href="/events" className="bg-foreground text-accent px-8 py-4 rounded-full font-semibold text-lg hover:bg-foreground transition-colors shadow-lg">
+                    <Link href="/events" className="bg-foreground text-accent  border-accent px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent hover:text-foreground hover:border-foreground transition-colors shadow-lg">
                       Nos Evenements
                     </Link>
-                    <Link href="/contact" className="border-2 border-foreground text-foreground px-8 py-4 rounded-full font-semibold text-lg hover:bg-foreground hover:text-accent transition-colors">
+                    <Link href="/contact" className="border-2 border-foreground text-foreground px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent hover:text-foreground hover:border-accent transition-colors">
                       Nous contacter
                     </Link>
                   </div>
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
           <div className="container mx-auto flex items-center justify-center h-full">
             <div className="grid gap-8 mb-16 max-w-4xl mx-auto z-10 px-4">
-              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border border-secondary/50 sm:mr-20">
+              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border-2 border-secondary/70 sm:mr-20">
                 <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-4">
                   Nous sommes une association à but non lucratif (loi 1901) fondée dans le Tarn en Septembre 2020, spécialisée dans l’organisation d’événements autour des jeux de combat et de la Culture Geek. <br />
                   Principalement portée sur l’événementiel et les animations, l’association peut être prestataire pour de nombreux évènements/conférences, mais organise également ses propres évènements. <br />
@@ -76,7 +76,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border border-secondary/50 sm:ml-20">
+              <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border-2 border-secondary/70 sm:ml-20">
                 <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-4">
                   Nous sommes une association à but non lucratif (loi 1901) fondée dans le Tarn en Septembre 2020, spécialisée dans l’organisation d’événements autour des jeux de combat et de la Culture Geek. <br />
                   Principalement portée sur l’événementiel et les animations, l’association peut être prestataire pour de nombreux évènements/conférences, mais organise également ses propres évènements. <br />

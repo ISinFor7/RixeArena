@@ -3,6 +3,8 @@ import "@/app/globals.css"
 import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
 import { Viewport } from "next"
+import BPaypal from "@/components/logo/paypal-big"
+import { Link } from "lucide-react"
   
 
 const orbitron = Orbitron({ subsets: ["latin"] })
@@ -63,6 +65,11 @@ export default function RootLayout({
           <footer className="mt-auto border-t border-primary/30 py-6">
             <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
               © {new Date().getFullYear()} Rixe Arena Tournament.
+              <br />
+              <a href="https://www.paypal.com/donate?token=JT3Kvah8e9K1zqAOfHyGjsl-fJlzpO-_yr3GVocmuZg5_8dA_OTrtHW8GuumH8ogaOXhu8mRaNTfcP3k">
+                Faites un don
+                <BPaypal className="inline-block ml-2 size-20" />
+              </a>
             </div>
           </footer>
         </div>
