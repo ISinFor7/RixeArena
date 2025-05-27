@@ -76,7 +76,6 @@ export async function getNextEvent() {
   try {
     const collection = await getCollections()
     const filter = { dateFin: { $gte: new Date().toISOString().split('T')[0] }, published: true }
-    console.log(new Date().toISOString().split('T')[0])
     const article = await collection.find(filter).sort({date: 1}).limit(1).toArray()
     if (article.length === 0) {
       return null

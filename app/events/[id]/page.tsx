@@ -4,17 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+import { PageProps } from "@/.next/types/app/page";
 export const revalidate = 60; // Revalidate this page every 60 seconds
 
-interface ArticlePageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default async function ArticlePage({ params }: ArticlePageProps) {
-  const article = await getArticleById(params.id);
+export default async function ArticlePage({ params }: PageProps) {
+  const p = await params;
+  if (!p || !p.id) {
+    notFound();
+  }
+  const article = await getArticleById(p.id);
   if (!article) {
     notFound();
   }
