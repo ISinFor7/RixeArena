@@ -1,8 +1,4 @@
-import { mockDb, type Article } from "@/lib/mock-db"
-
-export type { Article } from "@/lib/mock-db"
-
-/*import clientPromise from "./mongodb"
+import { getCollections } from "./mongodb"
 import { ObjectId } from "mongodb"
 
 export type Article = {
@@ -23,14 +19,36 @@ export type Article = {
   privateComs?: string
 }
 
-export async function getArticles() {
+
+
+function convertToArticle(doc: any): Article {
+  return {
+    ...doc,
+    _id: doc._id.toString(),
+    date: new Date(doc.date),
+    dateFin: new Date(doc.dateFin),
+  }
+}
+
+export async function getFuturEvents() {
   try {
-    const client = await clientPromise
-    const db = client.db()
+    const collection = await getCollections()
+    const articles = await collection.find({}).sort({ createdAt: -1 }).toArray()
 
-    const articles = await db.collection("articles").find({}).sort({ createdAt: -1 }).limit(50).toArray()
+    return articles.map(convertToArticle)
+  } catch (error) {
+    console.error("Failed to fetch articles:", error)
+    return []
+  }
+}
 
-    return JSON.parse(JSON.stringify(articles)) as Article[]
+export async function getPastEvents() {
+  try {
+    const collection = await getCollections()
+
+    const articles = await collection.find({}).sort({ createdAt: -1 }).limit(50).toArray()
+
+    return articles.map(convertToArticle)
   } catch (error) {
     console.error("Failed to fetch articles:", error)
     return []
@@ -39,10 +57,9 @@ export async function getArticles() {
 
 export async function getArticleById(id: string) {
   try {
-    const client = await clientPromise
-    const db = client.db()
+    const collection = await getCollections()
 
-    const article = await db.collection("articles").findOne({ _id: new ObjectId(id) })
+    const article = await collection.findOne({ id: new ObjectId(id) })
 
     if (!article) {
       return null
@@ -54,36 +71,33 @@ export async function getArticleById(id: string) {
     return null
   }
 }
+
 export async function getNextEvent() {
   try {
-    const client = await clientPromise
-    const db = client.db()
-    const filter = { date: { $gte: new Date() }, published: true }
-    const sort = { date: 1 } // Sort by date ascending
-    const nextEvent = await db.collection("articles").find(filter).sort(sort).limit(1).toArray()
-  catch (error) {
+    const collection = await getCollections()
+    const filter = { dateFin: { $gte: new Date().toISOString().split('T')[0] }, published: true }
+    console.log(new Date().toISOString().split('T')[0])
+    const article = await collection.find(filter).sort({date: 1}).limit(1).toArray()
+    if (article.length === 0) {
+      return null
+    }
+    return convertToArticle(article[0]) as Article;
+  } catch (error) {
     console.error("Failed to fetch next event:", error)
     return null
   }
-}*/
-
+}
 
 export async function getArticles(): Promise<{ futureEvents: Article[]; pastEvents: Article[] }> {
   try {
-    const futureEvents = await mockDb.getFuturEvents();
-    const pastEvents = await mockDb.getPastEvents();
+    const collection = await getCollections()
+    const articles = await collection.find({}).sort({ createdAt: -1 }).toArray()
+    const convertedArticles = articles.map(convertToArticle);
+    const futureEvents = convertedArticles.filter((article: Article) => article.dateFin >= new Date() && article.published);
+    const pastEvents = convertedArticles.filter((article: Article) => article.dateFin < new Date() && article.published);
     return { futureEvents, pastEvents };
   } catch (error) {
     console.error("Failed to fetch articles:", error);
     return { futureEvents: [], pastEvents: [] };
-  }
-}
-
-export async function getArticleById(id: string): Promise<Article | null> {
-  try {
-    return await mockDb.getArticleById(id)
-  } catch (error) {
-    console.error(`Failed to fetch article with id ${id}:`, error)
-    return null
   }
 }

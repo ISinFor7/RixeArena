@@ -1,37 +1,43 @@
-import { MongoClient, ServerApiVersion } from "mongodb"
+import { MongoClient, ServerApiVersion, type Db, type Collection} from "mongodb"
+import { Article } from "./articles"
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Please add your MongoDB URI to .env.local")
 }
 
 const uri = process.env.MONGODB_URI
-const options = {
+/*const options = {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
   },
-}
+}*/
 
-let client
+let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
-if (process.env.NODE_ENV === "development") {
-  // In development mode, use a global variable so that the value
-  // is preserved across module reloads caused by HMR (Hot Module Replacement).
-  const globalWithMongo = global as typeof global & {
-    _mongoClientPromise?: Promise<MongoClient>
-  }
 
-  if (!globalWithMongo._mongoClientPromise) {
-    client = new MongoClient(uri, options)
-    globalWithMongo._mongoClientPromise = client.connect()
-  }
-  clientPromise = globalWithMongo._mongoClientPromise
-} else {
-  // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options)
-  clientPromise = client.connect()
-}
+client = new MongoClient(uri, {})
+clientPromise = client.connect()
+
 
 export default clientPromise
+
+export const getCollectionsv2 = async () => {
+  try {
+    await client.connect();
+    return client.db('egouts').collection<Article>('articles');
+  } catch (error) {
+    console.error('Error data:', error);
+    throw new Error('Could not get MongoDB collection');
+  }
+}
+export async function getDatabase(): Promise<Db> {
+  const client = await clientPromise
+  return client.db("egouts")
+}
+export async function getCollections(): Promise<Collection> {
+  const db = await getDatabase()
+  return db.collection("articles")
+}

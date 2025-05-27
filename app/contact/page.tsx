@@ -39,24 +39,24 @@ export default function Calendrier() {
             </form>
           </div>
           <div className="flex flex-col gap-[16px] items-center sm:items-start">
-            <a href="mailto:rixe-arena-tournament@hotmail.com">
+            <a href="mailto:rixe-arena-tournament@hotmail.com" className="text-[20px] text-center sm:text-left text-secondary/80 font-semibold">
               rixe-arena-tournament@hotmail.com
             </a>
             <ul className="flex gap-[24px] flex-wrap items-center justify-center sm:justify-start">
               <a href="https://www.instagram.com/rixe_arena_tournament/" target="_blank" rel="noopener noreferrer">
-                <Instagram className="text-accent size-18"/>
+                <Instagram className="text-secondary/80 size-18"/>
               </a>
               <a href="https://www.twitch.tv/rixearenatournament" target="_blank" rel="noopener noreferrer">    
-                <Twitch className="text-accent size-18"/>
+                <Twitch className="text-secondary/80 size-18"/>
               </a>    
               <a href="https://www.youtube.com/channel/UCJcTzMEe0RrE6_f5wZxPc2g" target="_blank" rel="noopener noreferrer">    
-                  <Youtube className="text-accent size-18"/>
+                  <Youtube className="text-secondary/80 size-18"/>
               </a>
               <a href="https://www.x.com/RixeArena" target="_blank" rel="noopener noreferrer">
-                <X className="text-accent size-18"/>
+                <X className="text-secondary/80 size-18"/>
               </a>
               <a href="https://www.discord.gg/gTEh9HT" target="_blank" rel="noopener noreferrer">
-                <Discord className="text-accent size-18"/>
+                <Discord className="text-secondary/80 size-18"/>
               </a>
             </ul>
           </div>

@@ -1,9 +1,13 @@
-"use client";
-import { Megaphone, Gamepad2 } from "lucide-react"
+import { Gamepad2 } from "lucide-react"
+import { getNextEvent } from "@/lib/articles";
 import Image from "next/image";
 import Link from "next/link";
+import { NextEventBanner } from "@/components/nextEventBanner";
 
-export default function Home() {
+export const revalidate = 60; // Revalidate this page every 60 seconds
+
+export default async function Home() {
+  const nextE = await getNextEvent();
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Peinture */}
@@ -15,12 +19,8 @@ export default function Home() {
       <div className="absolute top-60 right-1/3 w-10 h-10 bg-indigo-400 rounded-full opacity-50 blur-sm"></div>
 
       {/* Bannière */}
-      <div className="bg-purple-600 text-white py-2 px-4 relative z-10">
-        <Link href="/articles/1" className="container mx-auto flex items-center justify-center gap-2 text-sm md:text-base">
-          <Megaphone className="w-4 h-4 flex-shrink-0" />
-          <span className="text-center">Prochain évènements le 25/01 à Albi, cliquez ici pour plus d'infos</span>
-        </Link>
-      </div>
+      <NextEventBanner nextEvent={nextE}/>
+      
       <div className="relative">
         <div className=" relative z-10">
           <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
@@ -61,6 +61,7 @@ export default function Home() {
 
         {/* Separation diagonale */}
         <div className="absolute bottom--20 left-0 right-0 h-80 bg-accent transform origin-bottom-left -skew-y-3 z-0"></div>
+        
         <div className="bg-accent transform origin-bottom-left">
           <div className="container mx-auto flex items-center justify-center h-full pb-10">
             <Gamepad2 className="size-12 text-yellow-300 animate-pulse" />

@@ -29,7 +29,7 @@ export default async function Calendrier() {
           </h1>
           <ArticleList articles={articles.futureEvents} />
         </div>
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-center w-full">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl mb-8">
             Events passés:
           </h1>

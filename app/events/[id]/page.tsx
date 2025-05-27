@@ -15,7 +15,6 @@ interface ArticlePageProps {
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await getArticleById(params.id);
-
   if (!article) {
     notFound();
   }
