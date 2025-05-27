@@ -6,19 +6,13 @@ if (!process.env.MONGODB_URI) {
 }
 
 const uri = process.env.MONGODB_URI
-/*const options = {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-}*/
+const options = {useUnifiedTopology: true, useNewUrlParser: true, maxIdleTimeMS : 270000, minPoolSize : 2, maxPoolSize : 4}
 
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
 
-client = new MongoClient(uri, {})
+client = new MongoClient(uri, options)
 clientPromise = client.connect()
 
 
