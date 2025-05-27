@@ -191,13 +191,6 @@ export default function Contact() {
                     Suivez toutes nos aventures sur les réseaux sociaux et soyez mis au courant des prochains évènements.
                   </p>
                   <div className="flex flex-col gap-[16px] items-center sm:items-start">
-                    <a
-                      href="mailto:rixe-arena-tournament@hotmail.com"
-                      className="text-[18px] text-center sm:text-left inline-flex text-secondary font-semibold"
-                    >
-                      <Mail className="w-6 h-6 text-secondary mr-2"/>
-                      rixe-arena-tournament@hotmail.com
-                    </a>
                     <ul className="flex gap-[24px] flex-wrap items-center justify-center sm:justify-start">
                       <a
                         href="https://www.instagram.com/rixe_arena_tournament/"
@@ -244,12 +237,12 @@ export default function Contact() {
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 flex items-center justify-center">
+                      <div className="w-12 h-12 flex items-center rounded-full border-2 border-secondary justify-center">
                         <Mail className="w-6 h-6 text-secondary" />
                       </div>
                       <div>
                         <p className="font-semibold text-secondary">Email</p>
-                        <p className="">rixe-arena-tournament@hotmail.com</p>
+                        <a href="mailto:rixe-arena-tournament@hotmail.com">rixe-arena-tournament@hotmail.com</a>
                       </div>
                     </div>
                   </div>
