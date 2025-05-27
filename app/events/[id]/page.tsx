@@ -17,4 +17,9 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) {
     notFound();
   }
+  return (
+    <div className="container mx-auto px-4 py-8"> 
+      {article.title} 
+    </div>
+  )
 }
