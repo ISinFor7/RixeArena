@@ -68,7 +68,7 @@ export default function Home() {
           <div className="container mx-auto flex items-center justify-center h-full">
             <div className="grid gap-8 mb-16 max-w-6xl z-10 px-2">
               <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border-2 border-secondary/70 sm:mr-20">
-                <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-4">
+              <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-2">
                   Nous sommes une association à but non lucratif (loi 1901) fondée dans le Tarn en Septembre 2020, spécialisée dans l’organisation d’événements autour des jeux de combat et de la Culture Geek. <br />
                   Principalement portée sur l’événementiel et les animations, l’association peut être prestataire pour de nombreux évènements/conférences, mais organise également ses propres évènements. <br />
                   <br />
@@ -77,7 +77,7 @@ export default function Home() {
               </div>
 
               <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-background/70 to-background border-2 border-secondary/70 sm:ml-20">
-                <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-4">
+                <p className="text-center text-primary text-sm md:text-base lg:text-lg font-semibold pt-2">
                   Nous sommes une association à but non lucratif (loi 1901) fondée dans le Tarn en Septembre 2020, spécialisée dans l’organisation d’événements autour des jeux de combat et de la Culture Geek. <br />
                   Principalement portée sur l’événementiel et les animations, l’association peut être prestataire pour de nombreux évènements/conférences, mais organise également ses propres évènements. <br />
                   <br />

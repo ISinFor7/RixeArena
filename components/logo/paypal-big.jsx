@@ -3,8 +3,8 @@ const BPaypal = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={800}
-    height={800}
-    viewBox="-11.153 -123.214 326.05 326.05"
+    height={300}
+    viewBox="-11.153 -11.214 326.05 122.05"
     {...props}
   >
     <g transform="matrix(2.07675 0 0 -2.07675 -11.153 92.77)">

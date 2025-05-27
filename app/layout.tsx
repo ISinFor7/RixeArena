@@ -64,12 +64,16 @@ export default function RootLayout({
           <main className="flex-1 container mx-auto pb-8 min-w-[99vw]">{children}</main>
           <footer className="mt-auto border-t border-primary/30 py-6">
             <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Rixe Arena Tournament.
-              <br />
               <a href="https://www.paypal.com/donate?token=JT3Kvah8e9K1zqAOfHyGjsl-fJlzpO-_yr3GVocmuZg5_8dA_OTrtHW8GuumH8ogaOXhu8mRaNTfcP3k">
                 Faites un don
-                <BPaypal className="inline-block ml-2 size-20" />
+                <BPaypal className="inline-block ml-2 w-20 h-auto" />
               </a>
+              <br />
+              <br />
+              <div className="flex flex-col sm:flex-row justify-center gap-2">
+                © {new Date().getFullYear()} Rixe Arena Tournament.
+                <a href="/mentions-legales" className="ml-5">Mentions legales</a>
+              </div>
             </div>
           </footer>
         </div>
