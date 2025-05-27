@@ -51,7 +51,7 @@ export default function Contact() {
             </h1>
             <div className="grid lg:grid-cols-2 gap-12">
               <div className="text-center lg:text-left animate-fade-in-up">
-                <p className="text-lg md:text-xl mb-4">
+                <p className="text-lg md:text-xl font-semibold text-secondary mb-4">
                   Besoin d’un devis ? 
                 </p>
                 <p className="text-lg md:text-xl mb-6">
@@ -64,7 +64,7 @@ export default function Contact() {
               </div>
 
               <div className="text-center lg:text-left animate-fade-in-up animate-delay-200">
-                <p className="text-lg md:text-xl mb-4">
+                <p className="text-lg md:text-xl font-semibold text-secondary mb-4">
                   Une autre demande? 
                 </p>
                 <p className="text-lg md:text-xl mb-6">
