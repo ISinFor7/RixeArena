@@ -112,7 +112,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-secondary rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all"
-                        placeholder="Your full name"
+                        placeholder="Votre nom"
                       />
                     </div>
                     <div>
@@ -130,7 +130,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-secondary rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all"
-                        placeholder="your@email.com"
+                        placeholder="email@email.com"
                       />
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-secondary rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all"
-                      placeholder="What's this about?"
+                      placeholder="Sujet"
                     />
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export default function Contact() {
                       required
                       rows={6}
                       className="w-full px-4 py-3 border border-secondary rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us more about your project or inquiry..."
+                      placeholder="Votre message ici..."
                     />
                   </div>
                   <button
@@ -185,17 +185,17 @@ export default function Contact() {
                 {/* Contact Information */}
                 <div className="bg-gradient-to-br from-background/80 to-background rounded-3xl p-8 border border-secondary">
                   <h3 className="text-2xl font-bold mb-6">
-                    Follow Us
+                    Suivez nous
                   </h3>
                   <p className="mb-6">
-                    Stay connected with us on social media for the latest
-                    updates and creative inspiration.
+                    Suivez toutes nos aventures sur les réseaux sociaux et soyez mis au courant des prochains évènements.
                   </p>
                   <div className="flex flex-col gap-[16px] items-center sm:items-start">
                     <a
                       href="mailto:rixe-arena-tournament@hotmail.com"
-                      className="text-[20px] text-center sm:text-left text-accent/80 font-semibold"
+                      className="text-[18px] text-center sm:text-left inline-flex text-secondary font-semibold"
                     >
+                      <Mail className="w-6 h-6 text-secondary mr-2"/>
                       rixe-arena-tournament@hotmail.com
                     </a>
                     <ul className="flex gap-[24px] flex-wrap items-center justify-center sm:justify-start">
@@ -240,7 +240,7 @@ export default function Contact() {
 
                 <div className="bg-gradient-to-br from-background/80 to-background rounded-3xl p-8 border border-secondary">
                   <h3 className="text-2xl font-bold mb-6">
-                    Contact Information
+                    Contact
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
