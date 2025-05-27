@@ -14,6 +14,7 @@ export default async function ArticlePage({ params }: PageProps) {
     notFound();
   }
   const article = await getArticleById(p.id);
+  console.log("Article:", !article);
   if (!article) {
     notFound();
   }

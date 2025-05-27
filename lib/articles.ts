@@ -58,14 +58,11 @@ export async function getPastEvents() {
 export async function getArticleById(id: string) {
   try {
     const collection = await getCollections()
-
-    const article = await collection.findOne({ id: new ObjectId(id) })
-
+    const article = await collection.findOne({ _id: new ObjectId(id) })
     if (!article) {
       return null
     }
-
-    return JSON.parse(JSON.stringify(article)) as Article
+    return convertToArticle(article) as Article
   } catch (error) {
     console.error(`Failed to fetch article with id ${id}:`, error)
     return null

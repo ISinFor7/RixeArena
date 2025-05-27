@@ -25,7 +25,7 @@ export function NextEventBanner({ nextEvent }: { nextEvent: Article | null }) {
             
         return (
             <div className="bg-accent text-white py-2 px-4 relative z-10">
-            <Link href="/articles/1" className="container mx-auto flex items-center justify-center gap-2 text-sm md:text-base">
+            <Link href={`/events/${nextE._id}`} className="container mx-auto flex items-center justify-center gap-2 text-sm md:text-base">
                 <Megaphone className="w-4 h-4 flex-shrink-0" />
                 <span className="text-center">Prochain évènements le {formattedDate} à {nextE?.ville}, cliquez ici pour plus d'infos</span>
             </Link>

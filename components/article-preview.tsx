@@ -120,7 +120,7 @@ export function ArticlePreview({ article, isOpen, onClose }: ArticlePreviewProps
             </div>
 
             <div className="flex justify-end">
-              <Link href={`/articles/${article._id}`}>
+              <Link href={`/events/${article._id}`}>
                 <Button className="gap-2">
                   Ouvrir la page de l'event
                   <ArrowRight className="h-4 w-4" />
