@@ -19,9 +19,8 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", formData);
-    // You can add your form submission logic here
+    // à compléter si jamais l'autre methode ne fonctionne pas
   };
 
   const handleChange = (
@@ -81,12 +80,11 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Contact Content */}
       <div className="py-20 bg-accent relative z-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16">
-              {/* Contact Form */}
+
               <div className="bg-gradient-to-br from-background/80 to-background rounded-3xl shadow-2xl p-8 md:p-12 border border-secondary">
                 <h2 className="text-3xl font-bold text-primary mb-8">
                   Envoyez un message
@@ -180,9 +178,7 @@ export default function Contact() {
                 </form>
               </div>
 
-              {/* Contact Info & Social Media */}
               <div className="space-y-8">
-                {/* Contact Information */}
                 <div className="bg-gradient-to-br from-background/80 to-background rounded-3xl p-8 border border-secondary">
                   <h3 className="text-2xl font-bold mb-6">
                     Suivez nous
@@ -247,9 +243,6 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-
-                {/* Social Media Links */}
-                
               </div>
             </div>
           </div>
@@ -258,66 +251,3 @@ export default function Contact() {
     </div>
   );
 }
-/*
-  return (
-    <div className="grid justify-items-center p-8">
-      <div className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="text-[40px] font-bold text-center sm:text-left">
-          Contactez nous
-        </h1>
-        <div className="grid sm:grid-cols-2 gap-[16] items-center sm:items-start ">
-          <p className="text-[20px] text-center sm:text-left text-foreground font-semibold">
-            Besoin d’un devis ? <br/>
-            Vous voudriez faire ou animer un tournoi, un événement ou une conférence jeu vidéo mais vous ne savez pas comment?
-            Vous êtes un particulier, une association, une entreprise privée ou publique…
-            Laissez nous faire et profitez pleinement de nos connaissances!
-          </p>
-          <h2 className="text-[16px] text-right sm:text-justify text-accent w-6xl">
-            Une autre demande? <br/> <br />
-            Une question, une demande, une remarque, une volonté, … <br />
-            Nous restons à votre disposition pour répondre à vos messages. <br />
-            Nous essaierons de revenir vers vous dans les plus brefs délais.
-          </h2>
-        </div>
-        <p className="text-[20px] text-center sm:text-left">
-          Par ce formulaire ou bien notre adresse email ou nos réseaux sociaux.
-        </p>
-        <div className="flex flex-row gap-[16] items-center sm:items-start w-full">
-          <div className="flex flex-col gap-[16px] items-center sm:items-start w-100">
-            <form action="https://formspree.io/f" method="POST" className="flex flex-col gap-[16px]">
-              <input type="text" name="name" placeholder="Nom" required className="border-2 border-accent rounded-md p-2"/>
-              <input type="email" name="email" placeholder="Email" required className="border-2 border-accent rounded-md p-2"/>
-              <textarea name="message" placeholder="Message" required className="border-2 border-accent rounded-md p-2 h-[200px]"/>
-              <button type="submit" className="bg-accent text-white rounded-md p-2">Envoyer</button>
-            </form>
-          </div>
-          <div className="flex flex-col gap-[16px] items-center sm:items-start">
-            <a href="mailto:rixe-arena-tournament@hotmail.com" className="text-[20px] text-center sm:text-left text-secondary/80 font-semibold">
-              rixe-arena-tournament@hotmail.com
-            </a>
-            <ul className="flex gap-[24px] flex-wrap items-center justify-center sm:justify-start">
-              <a href="https://www.instagram.com/rixe_arena_tournament/" target="_blank" rel="noopener noreferrer">
-                <Instagram className="text-secondary/80 size-18"/>
-              </a>
-              <a href="https://www.twitch.tv/rixearenatournament" target="_blank" rel="noopener noreferrer">    
-                <Twitch className="text-secondary/80 size-18"/>
-              </a>    
-              <a href="https://www.youtube.com/channel/UCJcTzMEe0RrE6_f5wZxPc2g" target="_blank" rel="noopener noreferrer">    
-                  <Youtube className="text-secondary/80 size-18"/>
-              </a>
-              <a href="https://www.x.com/RixeArena" target="_blank" rel="noopener noreferrer">
-                <X className="text-secondary/80 size-18"/>
-              </a>
-              <a href="https://www.discord.gg/gTEh9HT" target="_blank" rel="noopener noreferrer">
-                <Discord className="text-secondary/80 size-18"/>
-              </a>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-      </footer>
-    </div>
-  );
-}
-*/
