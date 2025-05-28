@@ -4,6 +4,7 @@ import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
 import { Viewport } from "next"
 import BPaypal from "@/components/logo/paypal-big"
+import { url } from "inspector"
 
 const orbitron = Orbitron({ subsets: ["latin"] })
 
@@ -30,6 +31,10 @@ export const metadata = {
   },
   openGraph: {
     title: "Rixe Arena Tournament",
+    siteName: 'Rixe Arena Tournament',
+    //url: 'https://rixe-arena-tournament.fr',
+    url: 'https://rixe-arena.vercel.app/',
+    images: '/Logo.ico',
   },
   twitter: {
     card: "summary_large_image",
