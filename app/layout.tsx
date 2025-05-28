@@ -4,8 +4,6 @@ import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
 import { Viewport } from "next"
 import BPaypal from "@/components/logo/paypal-big"
-import { Link } from "lucide-react"
-  
 
 const orbitron = Orbitron({ subsets: ["latin"] })
 

@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageProps } from "@/.next/types/app/page";
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
+
 export const revalidate = 60; // Revalidate this page every 60 seconds
 
-
 export default async function ArticlePage({ params }: PageProps) {
+
   const p = await params;
   if (!p || !p.id) {
     notFound();
@@ -30,12 +32,12 @@ export default async function ArticlePage({ params }: PageProps) {
   const lieu = article.adresse || article.ville;
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/events" className="mb-8 inline-block">
+      <a href="/events" className="mb-8 inline-block">
         <Button variant="ghost" className="gap-2">
           <ArrowLeftIcon className="h-4 w-4" />
           Retour au calendrier
         </Button>
-      </Link>
+      </a>
 
       <article className="mx-auto max-w-6xl">
         {/* Header section with image and title side by side */}
@@ -87,8 +89,6 @@ export default async function ArticlePage({ params }: PageProps) {
                 </div>
               </div>
             )}
-
-            {/* Excerpt if available */}
             {article.shortDesc && (
               <div className="p-4 rounded-lg bg-card/50 border border-primary/20 shadow-[0_0_10px_rgba(255,0,255,0.1)]">
                 <p className="text-lg text-muted-foreground leading-relaxed italic">{article.shortDesc}</p>
@@ -100,22 +100,8 @@ export default async function ArticlePage({ params }: PageProps) {
         {/* Article content */}
         <div className="prose prose-slate max-w-none dark:prose-invert prose-lg">
           <div className="bg-card/30 rounded-lg p-8 border border-primary/20 shadow-[0_0_15px_rgba(255,0,255,0.1)]">
-            {article.content.split("\n").map((paragraph, index) => (
-              <p key={index} className="mb-6 text-base leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <MDXRemote source={article.content} />
           </div>
-        </div>
-
-        {/* Back to articles button at bottom */}
-        <div className="mt-12 text-center">
-          <Link href="/">
-            <Button variant="outline" className="gap-2 px-8 py-3">
-              <ArrowLeftIcon className="h-4 w-4" />
-              Back to All Articles
-            </Button>
-          </Link>
         </div>
       </article>
     </div>
