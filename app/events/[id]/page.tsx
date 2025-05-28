@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageProps } from "@/.next/types/app/page";
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
+import {useMDXComponents} from "@/mdx-component";
 
 export const revalidate = 60; // Revalidate this page every 60 seconds
 
@@ -100,7 +101,7 @@ export default async function ArticlePage({ params }: PageProps) {
         {/* Article content */}
         <div className="prose prose-slate max-w-none dark:prose-invert prose-lg">
           <div className="bg-card/30 rounded-lg p-8 border border-primary/20 shadow-[0_0_15px_rgba(255,0,255,0.1)]">
-            <MDXRemote source={article.content} />
+            <MDXRemote source={article.content} components={useMDXComponents({})} />
           </div>
         </div>
       </article>
