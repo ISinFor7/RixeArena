@@ -34,7 +34,7 @@ export const metadata = {
     siteName: 'Rixe Arena Tournament',
     //url: 'https://rixe-arena-tournament.fr',
     url: 'https://rixe-arena.vercel.app/',
-    images: '	https://rixe-arena.vercel.app/_next/image?url=%2FLogo.ico&w=1920&q=75',
+    images: 'https://rixe-arena.vercel.app/Logo.png',
   },
   twitter: {
     card: "summary_large_image",
