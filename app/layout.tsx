@@ -4,6 +4,7 @@ import { Orbitron } from "next/font/google"
 import { RetrowaveHeader } from "@/components/retrowave-header"
 import { Viewport } from "next"
 import BPaypal from "@/components/logo/paypal-big"
+import { Analytics } from "@vercel/analytics/next"
 import { url } from "inspector"
 
 const orbitron = Orbitron({ subsets: ["latin"] })
@@ -64,7 +65,7 @@ export default function RootLayout({
       <body className={`${orbitron.className}`}>
         <div className="flex min-h-screen flex-col retrowave-grid scanlines">
           <RetrowaveHeader />
-          <main className="flex-1 container mx-auto pb-8 min-w-[99vw]">{children}</main>
+          <main className="flex-1 container mx-auto pb-8 min-w-[99vw]">{children}<Analytics /></main>
           <footer className="mt-auto border-t border-primary/30 py-6">
             <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
               <a href="https://www.paypal.com/donate?token=JT3Kvah8e9K1zqAOfHyGjsl-fJlzpO-_yr3GVocmuZg5_8dA_OTrtHW8GuumH8ogaOXhu8mRaNTfcP3k">
