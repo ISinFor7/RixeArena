@@ -16,6 +16,8 @@ async function getCollectionUsers(): Promise<Collection> {
   return db.collection("users")
 }
 
+export type ArticleInput = Omit<Article, "_id">;
+
 export async function getUserFromDb(email:string,password:string): Promise<User | null> {
   try {
     const collection = await getCollectionUsers()
@@ -92,17 +94,12 @@ export async function deleteUserFromDb(email: string): Promise<Boolean> {
 }
 
 export async function createArticle(
-  articleData: Article
+  articleData: ArticleInput
 ): Promise<Boolean> {
   try {
     const db = await getDatabase()
     const collection = db.collection("articles")
-    // Convert string _id to ObjectId if present
-    const articleToInsert = {
-      ...articleData,
-      _id: articleData._id ? new ObjectId(articleData._id) : undefined
-    }
-    const result = await collection.insertOne(articleToInsert)
+    const result = await collection.insertOne(articleData)
     if (!result.acknowledged) {
       throw new Error('Failed to create article')
     }
@@ -115,7 +112,7 @@ export async function createArticle(
 
 export async function updateArticle(
   id: string,
-  articleData: Article
+  articleData: ArticleInput
 ): Promise<any> {
   try {
     const db = await getDatabase()
