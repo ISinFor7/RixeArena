@@ -84,16 +84,14 @@ export async function getNextEvent() {
   }
 }
 
-export async function getArticles(): Promise<{ futureEvents: Article[]; pastEvents: Article[] }> {
+export async function getArticles(): Promise<Article[]> {
   try {
     const collection = await getCollections()
     const articles = await collection.find({}).sort({ createdAt: -1 }).toArray()
     const convertedArticles = articles.map(convertToArticle);
-    const futureEvents = convertedArticles.filter((article: Article) => article.dateFin >= new Date() && article.published);
-    const pastEvents = convertedArticles.filter((article: Article) => article.dateFin < new Date() && article.published);
-    return { futureEvents, pastEvents };
+    return convertedArticles;
   } catch (error) {
     console.error("Failed to fetch articles:", error);
-    return { futureEvents: [], pastEvents: [] };
+    return [];
   }
 }
