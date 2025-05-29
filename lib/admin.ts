@@ -1,5 +1,5 @@
 import { getDatabase } from "./mongodb"
-import { type Collection, ObjectId } from "mongodb"
+import { type Collection, ObjectId, WithId } from "mongodb"
 import { User } from "next-auth"
 import bcrypt from "bcryptjs"
 import { Article } from "./articles"
@@ -7,7 +7,8 @@ import { Article } from "./articles"
 function convertToUser(doc: any): User {
   return {
     ...doc,
-    email: doc.email.toString(),
+    name: doc.name,
+    admin: doc.admin ? doc.admin : false,
   }
 }
 
@@ -16,12 +17,13 @@ async function getCollectionUsers(): Promise<Collection> {
   return db.collection("users")
 }
 
+
 export type ArticleInput = Omit<Article, "_id">;
 
-export async function getUserFromDb(email:string,password:string): Promise<User | null> {
+export async function getUserFromDb(name:string,password:string): Promise<User | null> {
   try {
     const collection = await getCollectionUsers()
-    const user = await collection.findOne({email: email})
+    const user = await collection.findOne({name: name},{ projection: { _id: 0, name: 1, admin:1, password:1} })
     if (user===undefined) {
       return null
     }
@@ -65,7 +67,7 @@ export async function updateUserInDb(user: User): Promise<Boolean> {
   try {
     const collection = await getCollectionUsers()
     const result = await collection.findOneAndUpdate(
-      { email: user.email },
+      { name: user.name },
       { $set: user },
       { returnDocument: 'after' }
     )
@@ -79,18 +81,31 @@ export async function updateUserInDb(user: User): Promise<Boolean> {
   }
 }
 
-export async function deleteUserFromDb(email: string): Promise<Boolean> {
+export async function deleteUserFromDb(name: string): Promise<Boolean> {
   try {
     const collection = await getCollectionUsers()
-    const result = await collection.deleteOne({ email: email })
+    const result = await collection.deleteOne({ name: name })
     if (result.deletedCount === 0) {
       throw new Error('User not found')
     }
+    const db = await getDatabase()
+    await db.collection("banned").insertOne({"name":name})
     return result.acknowledged && result.deletedCount > 0
   } catch (error) {
     console.error('Error data:', error);
       throw new Error('Could not delete user from MongoDB');
     }
+}
+
+export async function Banned(name:string) {
+  const db = await getDatabase()
+  const user = await db.collection("banned").findOne({"name":name})
+  if (user===undefined || !user || user===null) {
+    return false
+  }
+  else {
+    return true
+  }
 }
 
 export async function createArticle(

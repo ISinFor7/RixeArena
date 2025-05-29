@@ -23,10 +23,10 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
   return (
     <div>
       <div className="mb-8 flex items-center gap-4">
-        <Link href="/admin">
+        <Link href="/admin/events">
           <Button variant="ghost" className="gap-2">
             <ArrowLeftIcon className="h-4 w-4" />
-            Back to Dashboard
+            Retour à la gestion des events
           </Button>
         </Link>
         <div>
