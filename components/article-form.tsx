@@ -19,7 +19,8 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-
+  
+  
   return (
     <div>
       <div className="mb-8 flex items-center gap-4">
@@ -54,18 +55,18 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
         >
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="title">Title *</Label>
+              <Label htmlFor="title">Titre *</Label>
               <Input
                 id="title"
                 name="title"
                 defaultValue={article?.title || ""}
-                placeholder="Enter article title"
+                placeholder="Nom de l'event"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="author">Author *</Label>
+              <Label htmlFor="author">Auteur *</Label>{/*à supprimer et remplacer par une fonction auto */}
               <Input
                 id="author"
                 name="author"
@@ -82,13 +83,13 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
               id="shortDesc"
               name="shortDesc"
               defaultValue={article?.shortDesc || ""}
-              placeholder="Brief description of the article (optional)"
+              placeholder="Description rapide de l'event (optionel)"
               rows={3}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="date">Start Date *</Label>
+            <Label htmlFor="date">Date de début *</Label>
             <Input
               id="date"
               name="date"
@@ -98,7 +99,7 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dateFin">End Date *</Label>
+            <Label htmlFor="dateFin">Date de fin *</Label>
             <Input
               id="dateFin"
               name="dateFin"
@@ -109,12 +110,12 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="content">Content *</Label>
+            <Label htmlFor="content">Contenu de l'article *</Label>
             <Textarea
               id="content"
               name="content"
               defaultValue={article?.content || ""}
-              placeholder="Write your article content here..."
+              placeholder="Contenu de l'article ici en syntaxe MDX"
               rows={12}
               required
             />
@@ -122,7 +123,7 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
 
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="imageUrl">Image URL</Label>
+              <Label htmlFor="imageUrl">URL Image</Label>
               <Input
                 id="imageUrl"
                 name="imageUrl"
@@ -134,21 +135,21 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
 
 
             <div className="space-y-2">
-              <Label htmlFor="adresse">Address</Label>
+              <Label htmlFor="adresse">Addresse</Label>
               <Input
                 id="adresse"
                 name="adresse"
                 defaultValue={article?.adresse || ""}
-                placeholder="Event address"
+                placeholder="Adresse de l'event"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ville">City</Label>
+              <Label htmlFor="ville">Ville</Label>
               <Input
                 id="ville"
                 name="ville"
                 defaultValue={article?.ville || ""}
-                placeholder="Event city"
+                placeholder="Ville de l'event"
               />
             </div>
             <div className="space-y-2">
@@ -157,9 +158,26 @@ export function ArticleForm({ article, mode }: ArticleFormProps) {
                 id="tags"
                 name="tags"
                 defaultValue={article?.tags?.join(", ") || ""}
-                placeholder="React, JavaScript, Web Development (comma separated)"
+                placeholder="Cosplay, Tournoi, Tekken, etc (séparés par ', ')"
               />
             </div>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="published"
+              name="published"
+              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+              defaultChecked={article?.published ?? true}
+              disabled={isSubmitting}
+            />
+            <Label
+              htmlFor="published"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Publié (public)
+            </Label>
           </div>
 
           <div className="flex justify-end gap-4 pt-6">

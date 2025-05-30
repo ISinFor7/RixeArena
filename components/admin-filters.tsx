@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { SearchIcon, XIcon, ChevronDownIcon } from "lucide-react"
-import type { SortOption, FilterOptions } from "@/lib/filters"
+import type { SortOption, FilterOptions, PublishedFilter } from "@/lib/filters"
 
 interface AdminFiltersProps {
   onFiltersChange: (filters: FilterOptions) => void
@@ -26,9 +26,11 @@ export function AdminFilters({
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [selectedAuthor, setSelectedAuthor] = useState("")
   const [sortBy, setSortBy] = useState<SortOption>("newest")
+  const [publishedStatus, setPublishedStatus] = useState<PublishedFilter>("all")
   const [showSortMenu, setShowSortMenu] = useState(false)
   const [showTagMenu, setShowTagMenu] = useState(false)
   const [showAuthorMenu, setShowAuthorMenu] = useState(false)
+  const [showPublishedMenu, setShowPublishedMenu] = useState(false)
 
   const updateFilters = (newFilters: Partial<FilterOptions>) => {
     const filters: FilterOptions = {
@@ -36,6 +38,7 @@ export function AdminFilters({
       tags: selectedTags,
       author: selectedAuthor,
       sortBy,
+      publishedStatus,
       ...newFilters,
     }
     onFiltersChange(filters)
@@ -66,36 +69,49 @@ export function AdminFilters({
     setShowSortMenu(false)
   }
 
+  const handlePublishedChange = (status: PublishedFilter) => {
+    setPublishedStatus(status)
+    updateFilters({ publishedStatus: status })
+    setShowPublishedMenu(false)
+  }
+
   const clearFilters = () => {
     setSearch("")
     setSelectedTags([])
     setSelectedAuthor("")
     setSortBy("newest")
+    setPublishedStatus("all")
     updateFilters({ search: "", tags: [], author: "", sortBy: "newest" })
   }
 
-  const hasActiveFilters = search || selectedTags.length > 0 || selectedAuthor || sortBy !== "newest"
+  const hasActiveFilters = search || selectedTags.length > 0 || selectedAuthor || sortBy !== "newest" || publishedStatus !== "all"
 
   const sortOptions: { value: SortOption; label: string }[] = [
-    { value: "newest", label: "Newest First" },
-    { value: "oldest", label: "Oldest First" },
-    { value: "title-asc", label: "Title A-Z" },
-    { value: "title-desc", label: "Title Z-A" },
+    { value: "newest", label: "Date décroissante" },
+    { value: "oldest", label: "Date croissante" },
+    { value: "title-asc", label: "Titre A-Z" },
+    { value: "title-desc", label: "Titre Z-A" },
     { value: "author-asc", label: "Author A-Z" },
     { value: "author-desc", label: "Author Z-A" },
   ]
 
+  const publishedOptions: { value: PublishedFilter; label: string }[] = [
+    { value: "all", label: "All Articles" },
+    { value: "published", label: "Published Only" },
+    { value: "unpublished", label: "Unpublished Only" },
+  ]
   // Close menus when clicking outside
   const handleOutsideClick = () => {
     setShowSortMenu(false)
     setShowTagMenu(false)
     setShowAuthorMenu(false)
+    setShowPublishedMenu(false)
   }
 
   return (
     <>
       {/* Backdrop to close menus */}
-      {(showSortMenu || showTagMenu || showAuthorMenu) && (
+      {(showSortMenu || showTagMenu || showAuthorMenu || showPublishedMenu) && (
         <div className="fixed inset-0 z-[90]" onClick={handleOutsideClick} />
       )}
 
@@ -105,14 +121,49 @@ export function AdminFilters({
           <div className="relative flex-1">
             <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search articles, authors, content..."
+              placeholder="Recherchez un article, du contenu..."
               value={search}
               onChange={(e) => handleSearchChange(e.target.value)}
               className="pl-10"
             />
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            {/* Published Status Filter */}
+            <div className="relative">
+              <Button
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                onClick={() => {
+                  setShowPublishedMenu(!showPublishedMenu)
+                  setShowSortMenu(false)
+                  setShowTagMenu(false)
+                  setShowAuthorMenu(false)
+                }}
+              >
+                Status: {publishedOptions.find((opt) => opt.value === publishedStatus)?.label}
+                <ChevronDownIcon className="h-4 w-4" />
+              </Button>
+              {showPublishedMenu && (
+                <div className="absolute right-0 top-full mt-1 z-[100] w-48 rounded-md border border-primary/30 bg-card shadow-xl backdrop-blur-sm">
+                  <div className="p-1">
+                    {publishedOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => handlePublishedChange(option.value)}
+                        className={`w-full text-left px-3 py-2 text-sm rounded-sm hover:bg-accent transition-colors ${
+                          publishedStatus === option.value ? "bg-accent" : ""
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Sort Dropdown */}
             <div className="relative">
               <Button
@@ -123,9 +174,10 @@ export function AdminFilters({
                   setShowSortMenu(!showSortMenu)
                   setShowTagMenu(false)
                   setShowAuthorMenu(false)
+                  setShowPublishedMenu(false)
                 }}
               >
-                Sort: {sortOptions.find((opt) => opt.value === sortBy)?.label}
+                Tri: {sortOptions.find((opt) => opt.value === sortBy)?.label}
                 <ChevronDownIcon className="h-4 w-4" />
               </Button>
               {showSortMenu && (
@@ -157,9 +209,10 @@ export function AdminFilters({
                   setShowAuthorMenu(!showAuthorMenu)
                   setShowSortMenu(false)
                   setShowTagMenu(false)
+                  setShowPublishedMenu(false)
                 }}
               >
-                Author {selectedAuthor && `(${selectedAuthor})`}
+                Auteur {selectedAuthor && `(${selectedAuthor})`}
                 <ChevronDownIcon className="h-4 w-4" />
               </Button>
               {showAuthorMenu && (
@@ -171,7 +224,7 @@ export function AdminFilters({
                         !selectedAuthor ? "bg-accent" : ""
                       }`}
                     >
-                      All Authors
+                      Tout les auteurs
                     </button>
                     {availableAuthors.map((author) => (
                       <button
@@ -199,6 +252,7 @@ export function AdminFilters({
                   setShowTagMenu(!showTagMenu)
                   setShowSortMenu(false)
                   setShowAuthorMenu(false)
+                  setShowPublishedMenu(false)
                 }}
               >
                 Tags {selectedTags.length > 0 && `(${selectedTags.length})`}
@@ -235,11 +289,20 @@ export function AdminFilters({
         {/* Active Filters Display */}
         {hasActiveFilters && (
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm text-muted-foreground">Active filters:</span>
+            <span className="text-sm text-muted-foreground">Filtres actifs:</span>
+
+            {publishedStatus !== "all" && (
+              <Badge variant="secondary" className="gap-1">
+                {publishedStatus === "published" ? "Published" : "Unpublished"}
+                <button onClick={() => handlePublishedChange("all")}>
+                  <XIcon className="h-3 w-3" />
+                </button>
+              </Badge>
+            )}
 
             {selectedAuthor && (
               <Badge variant="secondary" className="gap-1">
-                Author: {selectedAuthor}
+                Auteur: {selectedAuthor}
                 <button onClick={() => handleAuthorChange(selectedAuthor)}>
                   <XIcon className="h-3 w-3" />
                 </button>
@@ -264,7 +327,7 @@ export function AdminFilters({
         {/* Results Count */}
         <div className="flex justify-between items-center text-sm text-muted-foreground">
           <span>
-            Showing {filteredCount} of {totalCount} articles
+            {filteredCount} events sur {totalCount} affichés
           </span>
         </div>
       </div>

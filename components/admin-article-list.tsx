@@ -16,7 +16,7 @@ interface AdminArticleListProps {
 
 export function AdminArticleList({ articles }: AdminArticleListProps) {
   const [deletingId, setDeletingId] = useState<string | null>(null)
-  const [filters, setFilters] = useState<FilterOptions>({ sortBy: "newest" })
+  const [filters, setFilters] = useState<FilterOptions>({ sortBy: "newest" , publishedStatus: "all" })
 
   const availableTags = useMemo(() => getAllTags(articles), [articles])
   const availableAuthors = useMemo(() => getAllAuthors(articles), [articles])
@@ -86,7 +86,14 @@ export function AdminArticleList({ articles }: AdminArticleListProps) {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-lg mb-2 truncate">{article.title}</h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="font-semibold text-lg truncate">{article.title}</h3>
+                    {!article.published && (
+                      <Badge variant="outline" className="bg-destructive/10 text-destructive border-destructive/20">
+                        Non publié
+                      </Badge>
+                    )}
+                  </div>
                   <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
                     <span>By {article.author}</span>
                     <span>•</span>

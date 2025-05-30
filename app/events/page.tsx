@@ -8,6 +8,9 @@ export default async function Calendrier() {
   const articles = await getArticles();
   const futureEvents = articles.filter((article: Article) => article.dateFin >= new Date() && article.published);
   const pastEvents = articles.filter((article: Article) => article.dateFin < new Date() && article.published);
+  console.log("futur",futureEvents)
+  console.log(articles.map((a) => (a.published)))
+  console.log("passés",pastEvents)
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen md:p-8 pb-20 gap-16 sm:px-6">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">

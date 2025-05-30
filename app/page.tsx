@@ -3,6 +3,7 @@ import { getNextEvent } from "@/lib/articles";
 import Image from "next/image";
 import Link from "next/link";
 import { NextEventBanner } from "@/components/nextEventBanner";
+import { Suspense } from "react";
 
 export const revalidate = 60; // Revalidate this page every 60 seconds
 
@@ -19,8 +20,9 @@ export default async function Home() {
       <div className="absolute top-60 right-1/3 w-10 h-10 bg-indigo-400 rounded-full opacity-50 blur-sm"></div>
 
       {/* Bannière */}
-      <NextEventBanner nextEvent={nextE}/>
-      
+      <Suspense>
+        <NextEventBanner nextEvent={nextE}/>
+      </Suspense>
       <div className="relative">
         <div className=" relative z-10">
           <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">

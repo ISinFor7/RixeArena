@@ -1,12 +1,14 @@
 import type { Article } from "./articles"
 
 export type SortOption = "newest" | "oldest" | "title-asc" | "title-desc" | "author-asc" | "author-desc"
+export type PublishedFilter = "all" | "published" | "unpublished"
 
 export interface FilterOptions {
   search?: string
   tags?: string[]
   author?: string
   sortBy?: SortOption
+  publishedStatus?: PublishedFilter
 }
 
 export function filterAndSortArticles(articles: Article[], options: FilterOptions): Article[] {
@@ -35,6 +37,14 @@ export function filterAndSortArticles(articles: Article[], options: FilterOption
     filtered = filtered.filter((article) => article.author.toLowerCase().includes(options.author!.toLowerCase().trim()))
   }
 
+  // Apply published status filter
+  if (options.publishedStatus) {
+    if (options.publishedStatus === "published") {
+      filtered = filtered.filter((article) => article.published)
+    } else if (options.publishedStatus === "unpublished") {
+      filtered = filtered.filter((article) => !article.published)
+    }
+  }
   // Apply sorting
   switch (options.sortBy) {
     case "newest":
@@ -69,6 +79,17 @@ export function getAllTags(articles: Article[]): string[] {
     article.tags?.forEach((tag) => tagSet.add(tag))
   })
   return Array.from(tagSet).sort()
+}
+
+export function incomplets(articles: Article[]): Article[] {
+  const articleSet = new Set<Article>()
+  articles.forEach((article) => {
+    var values = Object.values(article)
+    if (values.includes("")){
+      articleSet.add(article)
+    }
+  })
+  return Array.from(articleSet).sort()
 }
 
 export function getAllAuthors(articles: Article[]): string[] {

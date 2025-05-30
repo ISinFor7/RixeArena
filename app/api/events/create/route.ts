@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         .split(",")
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0),
-        published: false,
+        published: formData.get("published") === "on",
         date: new Date(formData.get("date") as string),
         dateFin: new Date(formData.get("dateFin") as string),
         ville: formData.get("ville") as string,
@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
     if (!articleData.title || !articleData.content || !articleData.author) {
       return NextResponse.json({ success: false, error: "Title, content, and author are required" }, { status: 400 })
     }
-
     const newArticle = await createArticle(articleData)
 
     if (newArticle) {
