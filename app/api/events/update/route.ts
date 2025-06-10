@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0),
         published: formData.get("published") === "on",
-        date: new Date(formData.get("date") as string),
+        date: new Date(formData.get("date") as string).toISOString().split('T')[0],
         dateFin: new Date(formData.get("dateFin") as string),
         ville: formData.get("ville") as string,
       }
